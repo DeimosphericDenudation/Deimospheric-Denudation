@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Free Web tutorials">
+    <meta name="author" content="Harshit Sah">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Deimospheric Denudation</title>
+
+    <link rel="stylesheet" href="bluescript.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+
+<body>
+
+    <script src="script.js" defer></script>
+
+    <script type="importmap">
+        {
+          "imports": {
+            "@google/generative-ai": "https://esm.run/@google/generative-ai"
+          }
+        }
+      </script>
+
+
+    <script type="module">
+        import { GoogleGenerativeAI } from "@google/generative-ai";
+
+        const API_KEY = "AIzaSyCxNP-yKp6ITF_5P3Nj7DB0NFMBRSZckKg";
+
+        const genAI = new GoogleGenerativeAI(API_KEY);
+
+        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+
+        async function run() {
+            // For text-only input, use the gemini-pro model
+            const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+
+            const chat = model.startChat({
+                history: [
+                    {
+                        role: "user",
+                        parts: "While answering, your paragraph should begin with '<p>' and end with '<p>', ok?",
+                    },
+                    {
+                        role: "model",
+                        parts: "Ok, sure, I will",
+                    },
+                    {
+                        role: "user",
+                        parts: "While answering, your table should have appropriate html table tags and only table tags. Furthermore, give Emoji"
+                    },
+                    {
+                        role: "model",
+                        parts: "Ok, sure, I will. I know HTML",
+                    },
+                    {
+                        role: "user",
+                        parts: "Hello, I have 2 dogs in my house.",
+                    },
+                    {
+                        role: "model",
+                        parts: "Great to meet you. What would you like to know?",
+                    },
+                    {
+                        role: "user",
+                        parts: "Create a table of all dog breeds and their biological name.",
+                    },
+                    {
+                        role: "model",
+                        parts: "<table><tr><th>Dog Breed</th><th>Biological Name</th><th>Emoji</th></tr><tr><td>Afghan Hound</td><td>Canis lupus familiaris</td><td>🐕‍🦺</td></tr><tr><td>Beagle</td><td>Canis lupus familiaris</td><td>🐶</td></tr><tr><td>Bulldog</td><td>Canis lupus familiaris</td><td>",
+                    },
+                ],
+                generationConfig: {
+                    maxOutputTokens: 100,
+                },
+            });
+
+            const msg = "That was great. Now create a table of cat breeds.";
+
+            const result = await chat.sendMessage(msg);
+            const response = await result.response;
+
+            const text = response.text();
+
+            var regex = /\*\*(.*?)\*\*/g;
+            var originalString = text;
+            var formattedString = originalString.replace(regex, "<b>$1</b>");
+
+            console.log(originalString);
+
+            regex = /\`\`\`(.*?)\`\`\`/g;
+            originalString = formattedString;
+            formattedString = originalString.replace(regex, "<p>$1</p>");
+
+            var currentChat = document.querySelector('.currentChat');
+            currentChat.innerHTML += '<div class="modelResponseBox">' + formattedString + '</div>';
+        }
+
+        run();
+    </script>
+
+    <header>
+        <div class="mainHeader">
+            <button class="material-symbols-rounded icon menuButton">menu</button>
+            <div class="logo">Deimospheric Denudation</div>
+            <button class="material-symbols-rounded icon profileButton">person</button>
+        </div>
+        <div class="banner">
+            <button class="material-symbols-rounded closeBannerButton">close</button>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, velit. Totam illum saepe nisi aliquam, cumque
+            fugiat quis accusantium! Numquam nesciunt dolore labore vero blanditiis iusto temporibus atque pariatur
+            accusamus.
+        </div>
+    </header>
+
+    <div class="chatPage">
+        <div class="chatPageHeader">
+            <input type="text" placeholder="Unnanmed Conversation" maxlength="50" class="chatNameInput">
+            <button class="material-symbols-rounded icon chatHistoryButton">history</button>
+        </div>
+        <div class="currentChat">
+            <div class="userChatBox">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi possimus libero debitis. Quaerat esse
+                similiqu!
+            </div>
+        </div>
+        <form class="userInputForm">
+            <label for="userCommand"><span
+                    class="material-symbols-rounded userTextBoxArrow">prompt_suggestion</span></label>
+            <input type="text" id="userTextBox" placeholder="Enter your query here.">
+            <label for="userCommandSubmit"><button class="material-symbols-rounded icon userCommandSubmit">send</button></label>
+            <input type="submit" id="userCommandSubmit">
+        </form>
+    </div>
+
+    <div class="menuBox">
+        <button class="menuCloseButton material-symbols-rounded icon">close</button>
+
+        <li><span class="material-symbols-rounded icon">home</span>Home</li>
+        <li><span class="material-symbols-rounded icon">forum</span>Chat</li>
+        <li><span class="material-symbols-rounded icon">festival</span>Events</li>
+        <li><span class="material-symbols-rounded icon">settings</span>Settings</li>
+        <li><span class="material-symbols-rounded icon">info</span>Information</li>
+    </div>
+</body>
+
+</html>

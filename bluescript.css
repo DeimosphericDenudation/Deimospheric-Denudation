@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    margin: 0;
+    background: rgb(240, 240, 240);
+}
+
+header {
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0;
+    width: 100vw;
+    box-shadow: 0 0 10px;
+}
+
+.logo {
+    font-size: small;
+    color: red;
+    width: 0;
+    font-weight: 900;
+}
+
+.icon {
+    border: none;
+    background: transparent;
+    padding: 10px;
+}
+
+.profileButton {
+    position: absolute;
+    right: 0;
+}
+
+.mainHeader{
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.chatPageHeader{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.closeBannerButton {
+    color: white;
+    font-size: 20px !important;
+    text-align: center;
+    border: none;
+    padding: 0;
+    margin: 10px;
+    border-radius: 5px;
+    background: darkblue;
+}
+
+.banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    color: white;
+    width: 100vw;
+    background: blue;
+    padding: 5px 0;
+}
+
+.menuBox {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    display: none;
+    font-weight: 900;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+}
+
+.menuBoxActive {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.menuBox>li {
+    text-shadow: 1px 2px 3px rgb(100, 100, 100);
+    margin: 20px 30%;
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    transition: 0.5s;
+}
+
+.menuBox>li:hover {
+    transform: translate(20%);
+}
+
+.menuCloseButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.userInputForm {
+    width: 100vw;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:;
+    box-shadow: 0 0 10px #7a7a7a;
+}
+
+#userCommandSubmit {
+    display: none;
+}
+
+.userTextBoxArrow {
+    transform: translate(20%, -50%) !important;
+    position: absolute;
+    left: 12px;
+}
+
+#userTextBox {
+    border: none;
+    padding: 10px;
+    margin: 0 10px;
+    border-radius: 8px 20px 20px;
+    background: rgb(200, 200, 200);
+    width: 75vw;
+    text-indent: 20px;
+}
+
+.chatHistoryButton {
+    position: absolute;
+    right: 0;
+}
+
+.chatPageHeader {
+    max-width: 100vw;
+    padding: 10px 20px 10px;
+    font-size: 13px;
+    box-shadow: 0 0 10px #7a7a7a;
+}
+
+.chatNameInput {
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.userChatBox {
+    font-size: 12px;
+    border: none;
+    margin: 10px 10px 10px 20px;
+    padding: 10px 10px 10px 20px;
+    border-radius: 8px 20px 20px;
+    background: rgb(255, 255, 255);
+    box-shadow: 5px 10px 10px #ebbcff;
+    width: 75vw;
+    max-width: 70%;
+}
+
+.modelResponseBox {
+    background: ;
+    padding: 5px;
+    padding-left: 40px;
+    font-size: 12px;
+}
+
+table {
+    border-radius: 5px;
+    border-collapse: collapse;
+}
+
+tr:nth-child(2n + 1) {
+    background: rgb(220,220,220);
+}
+
+th {
+    background: lightblue;
+}
+
+td, th{
+    border: 1px solid black;
+}
